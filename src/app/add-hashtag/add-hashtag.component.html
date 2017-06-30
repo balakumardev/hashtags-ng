@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="alert alert-warning" [ngClass]="{hide: !processing}">
+    <p><i class="glyphicon glyphicon-repeat gly-spin"></i> Adding tweet... Please wait. </p>
+  </div>
+  <div class="alert alert-success" [ngClass]="{hide: !done}">
+    <p>Tweet successfully added.</p>
+    <span class="close" data-toggle="close"></span>
+  </div>
+  <form class="form-horizontal" (ngSubmit)="addHashtag(f)" #f="ngForm">
+    <div class="form-group">
+      <label for="tag" class="col-sm-2 control-label">Hashtag : </label>
+      <div class="col-sm-5">
+        <div class="input-group">
+          <span class="input-group-addon">#</span>
+          <input type="text" id="tag" name="tag" class="form-control" required="true" placeholder="" ngModel/>
+          <span class="input-group-btn"><button type="submit" class="btn btn-success">Add Hashtag</button></span>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

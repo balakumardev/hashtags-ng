@@ -1,0 +1,31 @@
+<div class="row"  *ngIf="loaded; else loadingMessage">
+  <div class="col-xs-3">
+    <div class="list-group">
+      <button type="button" class="list-group-item active">Top Trends <span class="badge">{{Hashtags.length}}</span></button>
+      <button type="button" class="list-group-item">Sports</button>
+      <button type="button" class="list-group-item">Bossiness</button>
+      <button type="button" class="list-group-item">Economics</button>
+    </div>
+  </div>
+  <div class="col-xs-9">
+    <div class="container-fluid" *ngIf="(Hashtags.length > 0); else errorAlert">
+      <button class="btn btn-danger pull-right" (click)="deleteAll()">Delete All</button>
+      <div class="clearfix"></div>
+      <br />
+      <div *ngFor="let tag of Hashtags.reverse()">
+        <app-hashtag [Hashtag]="tag"></app-hashtag>
+      </div>
+    </div>
+    <ng-template #errorAlert>
+      <div class="alert alert-danger">No hashtags found. Please add new hashtags <a routerLink="/add-hashtag"> here. </a></div>
+    </ng-template>
+  </div>
+
+</div>
+<ng-template #loadingMessage>
+  <div class="container">
+    <div class="row">
+    <h2>Loading.. Please wait.</h2>
+    </div>
+  </div>
+</ng-template>
